@@ -1,7 +1,6 @@
 /*
-  * Create Static object
+  * Create Static Array of objects
 */
-
 let contactArray = [
     {
         "id": 1,
@@ -26,36 +25,24 @@ let contactArray = [
     }
 ]
 
-
-
-function printObj() {
-    console.log('contact obj: ', contactObj);
-}
-
 /*
   * Set up handlebars
 */
 
-let template = $('#contact-list').html();
-let templateScript = Handlebars.compile(template);
-
-
-
-
-/*
-  * Insert html onto page
-*/
-
+$(function() {
+    let template = $('#contact-list').html();
+    let templateScript = Handlebars.compile(template);
+    let html = templateScript({contactArray});
+    $('#ContactResults').html(html);
+});
 
 /*
     Use jquery to iterate through array of objects
 */
 
-$.each(contactArray, function(index, value) {
-
-    let contactObj = value;
-    let html = templateScript(contactObj);
-    console.log('contact obj: ', contactObj)
-    $(document.body).append(html);
-
+/*$.each(contactArray, function(index, value) {
+   let contactObj = value;
+   let html = templateScript(contactObj);
+   $(document.body).append(html);
 });
+ */
